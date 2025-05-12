@@ -12,7 +12,7 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            flex-direction: column; /* 추가 */
+            flex-direction: row; /* 수정: 세로에서 가로로 변경 */
         }
         h1 {
             font-size: 4rem;
@@ -22,8 +22,8 @@
         img {
             width: 20%;
             height: 10%;
-            display: block; /* 추가: 이미지를 블록 요소로 변경 */
-            margin: 10px 0; /* 추가: 이미지 간격 */
+            display: block; /* 이미지를 블록 요소로 유지 */
+            margin: 10px; /* 이미지 간격을 동일하게 유지 */
         }
     </style>
 </head>
@@ -31,6 +31,5 @@
     <h1>Danitools</h1>
     <img src="./board.png" alt="Board">
     <img src="./timer.png" alt="Timer">
-</script>
 </body>
 </html>
