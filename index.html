@@ -12,6 +12,7 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            flex-direction: column; /* 추가 */
         }
         h1 {
             font-size: 4rem;
@@ -21,12 +22,13 @@
         img {
             width: 5%;
             height: 5%;
+            display: block; /* 추가: 이미지를 블록 요소로 변경 */
+            margin: 10px 0; /* 추가: 이미지 간격 */
         }
     </style>
 </head>
 <body>
-    <h1>Danitools</h1><p>
-   </p>
+    <h1>Danitools</h1>
     <img src="./board.png" alt="Board">
     <img src="./timer.png" alt="Timer">
 </body>
