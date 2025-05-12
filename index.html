@@ -12,24 +12,32 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            flex-direction: row; /* 수정: 세로에서 가로로 변경 */
+            flex-direction: column; /* 세로 배치 */
         }
         h1 {
             font-size: 4rem;
             font-weight: bold;
             text-align: center;
+            margin-bottom: 20px; /* 텍스트와 이미지 간격 추가 */
+        }
+        .images-container {
+            display: flex;
+            flex-direction: row; /* 이미지 가로 배치 */
+            justify-content: center;
+            gap: 10px; /* 이미지 간격 */
         }
         img {
             width: 20%;
-            height: 10%;
-            display: block; /* 이미지를 블록 요소로 유지함 */
-            margin: 10px; /* 이미지 간격을 동일하게 유지 */
+            height: auto;
+            display: block;
         }
     </style>
 </head>
 <body>
     <h1>Danitools</h1>
-    <img src="./board.png" alt="Board">
-    <img src="./timer.png" alt="Timer">
+    <div class="images-container">
+        <img src="./board.png" alt="Board">
+        <img src="./timer.png" alt="Timer">
+    </div>
 </body>
 </html>
