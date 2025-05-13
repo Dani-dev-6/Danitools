@@ -36,14 +36,14 @@
     </style>
 </head>
 <body>
-    <h1>Countdown Timer</h1>
+    <h1>타이머</h1>
     <div id="timer-container">
-        <input type="number" id="minutes" placeholder="Minutes" min="0" max="59">
-        <input type="number" id="seconds" placeholder="Seconds" min="0" max="59">
+        <input type="number" id="minutes" placeholder="분" min="0" max="59">
+        <input type="number" id="seconds" placeholder="초" min="0" max="59">
     </div>
     <button onclick="startCountdown()">Start</button>
     <button onclick="resetCountdown()">Reset</button>
-    <div id="notification">Time is up!</div>
+    <div id="notification">■■■시간이 종료되었습니다!■■■</div>
 
     <script>
         let countdownInterval;
