@@ -1,8 +1,98 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8>
-  <title>시계 - Danitools</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #timer-container {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        input {
+            font-size: 1em;
+            padding: 5px;
+            width: 70px;
+            text-align: center;
+            margin: 0 5px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    
+    <h1>Countdown Timer</h1>
+    <div id="timer-container">
+        <input type="number" id="minutes" placeholder="Minutes" min="0" max="59">
+        <input type="number" id="seconds" placeholder="Seconds" min="0" max="59">
+    </div>
+    <button onclick="startCountdown()">Start</button>
+    <button onclick="resetCountdown()">Reset</button>
+
+    <script>
+        let countdownInterval;
+        let remainingSeconds = 0;
+
+        function formatTime(seconds) {
+            const minutes = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+            return `${minutes}:${secs}`;
+        }
+
+        function updateTimerDisplay() {
+            const timerContainer = document.getElementById('timer-container');
+            timerContainer.textContent = formatTime(remainingSeconds);
+        }
+
+        function startCountdown() {
+            const inputMinutes = document.getElementById('minutes');
+            const inputSeconds = document.getElementById('seconds');
+            const minutes = parseInt(inputMinutes.value) || 0;
+            const seconds = parseInt(inputSeconds.value) || 0;
+
+            remainingSeconds = minutes * 60 + seconds;
+
+            if (remainingSeconds <= 0) {
+                alert('Please enter a valid time.');
+                return;
+            }
+
+            // Replace input fields with countdown text
+            const timerContainer = document.getElementById('timer-container');
+            timerContainer.textContent = formatTime(remainingSeconds);
+
+            clearInterval(countdownInterval); // Clear any existing timer
+            countdownInterval = setInterval(() => {
+                if (remainingSeconds > 0) {
+                    remainingSeconds--;
+                    updateTimerDisplay();
+                } else {
+                    clearInterval(countdownInterval);
+                    alert('Time is up!');
+                }
+            }, 1000);
+        }
+
+        function resetCountdown() {
+            clearInterval(countdownInterval);
+            remainingSeconds = 0;
+
+            // Restore input fields
+            const timerContainer = document.getElementById('timer-container');
+            timerContainer.innerHTML = `
+                <input type="number" id="minutes" placeholder="Minutes" min="0" max="59">
+                <input type="number" id="seconds" placeholder="Seconds" min="0" max="59">
+            `;
+        }
+    </script>
 </body>
+</html>
