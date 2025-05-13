@@ -27,6 +27,12 @@
             font-size: 1em;
             cursor: pointer;
         }
+        #notification {
+            color: red;
+            font-size: 1.5em;
+            margin-top: 20px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -37,6 +43,7 @@
     </div>
     <button onclick="startCountdown()">Start</button>
     <button onclick="resetCountdown()">Reset</button>
+    <div id="notification">Time is up!</div>
 
     <script>
         let countdownInterval;
@@ -70,6 +77,10 @@
             const timerContainer = document.getElementById('timer-container');
             timerContainer.textContent = formatTime(remainingSeconds);
 
+            // Hide notification if it was previously shown
+            const notification = document.getElementById('notification');
+            notification.style.display = 'none';
+
             clearInterval(countdownInterval); // Clear any existing timer
             countdownInterval = setInterval(() => {
                 if (remainingSeconds > 0) {
@@ -77,7 +88,8 @@
                     updateTimerDisplay();
                 } else {
                     clearInterval(countdownInterval);
-                    alert('Time is up!');
+                    // Show notification
+                    notification.style.display = 'block';
                 }
             }, 1000);
         }
@@ -92,6 +104,10 @@
                 <input type="number" id="minutes" placeholder="Minutes" min="0" max="59">
                 <input type="number" id="seconds" placeholder="Seconds" min="0" max="59">
             `;
+
+            // Hide notification
+            const notification = document.getElementById('notification');
+            notification.style.display = 'none';
         }
     </script>
 </body>
