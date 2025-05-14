@@ -88,8 +88,13 @@
                     updateTimerDisplay();
                 } else {
                     clearInterval(countdownInterval);
+
                     // Show notification
                     notification.style.display = 'block';
+
+                    // Play sound
+                    const audio = new Audio('path/to/sound-file.mp3');
+                    audio.play();
                 }
             }, 1000);
         }
